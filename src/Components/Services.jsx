@@ -10,49 +10,41 @@ const Services = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div className="card bg-base-100 p-5 shadow-lg space-y-5">
             <figure>
-              <img src="/shield.png" alt="" className="w-14" />
+              <img src="/delivery-truck.png" alt="" className="w-32" />
             </figure>
-            <div className="text-center px-5">
+            <div className="text-center">
               <h2 className="font-bold text-xl">Standard Courier</h2>
               <p>
                 Our Standard Courier Service offers reliable and cost-effective
                 delivery solutions for parcels of all sizes. With standard
                 delivery times, your parcels are handled with care and delivered
-                safely to their destination. Whether it's for personal or
-                business needs, our standard courier service ensures timely
-                delivery at an affordable price.
+                safely to their destination.
               </p>
             </div>
           </div>
           <div className="card bg-base-100 p-5 shadow-lg space-y-5">
             <figure>
-              <img src="/stopwatch.png" alt="" className="w-14" />
+              <img src="/express-delivery.png" alt="" className="w-32" />
             </figure>
-            <div className="text-center px-5">
+            <div className="text-center">
               <h2 className="font-bold text-xl">Express Courier</h2>
               <p className="text-center">
                 Need your parcels delivered urgently? Our Express Courier
                 Service is the perfect solution. With expedited delivery
                 options, your parcels are prioritized for quick dispatch and
-                delivered swiftly to their destination. Enjoy peace of mind
-                knowing that your urgent shipments will reach their recipients
-                in the shortest possible time.
               </p>
             </div>
           </div>
           <div className="card bg-base-100 p-5 shadow-lg space-y-5">
             <figure>
-              <img src="/live-tracking.png" alt="" className="w-14" />
+              <img src="/fast-delivery.png" alt="" className="w-32" />
             </figure>
-            <div className="text-center px-5">
+            <div className="text-center">
               <h2 className="font-bold text-xl"> Over Night Courier</h2>
               <p>
                 When time is of the essence, our Overnight Courier Service
                 delivers. With overnight delivery options, your parcels are
                 picked up and delivered within the next business day, ensuring
-                prompt delivery when it matters most. Whether it's important
-                documents or time-sensitive packages, trust our overnight
-                courier service for reliable and efficient delivery overnight.
               </p>
             </div>
           </div>

@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { HiMenu } from "react-icons/hi";
 import { useEffect, useState } from "react";
+import useAuth from "../Hooks/UseAuth";
 
 const Navbar = () => {
   const [scrolling, setScrolling] = useState(false);
+  const { user, logOut } = useAuth();
 
   const changeColor = () => {
     if (window.scrollY >= 10) {
@@ -62,13 +64,18 @@ const Navbar = () => {
                 className="menu flex menu-sm dropdown-content mt-3  p-2 shadow bg-base-100 rounded-box"
               >
                 {links}
-                <li>
-                  <Link>Log in</Link>
-                </li>
               </ul>
             </div>
             <Link>
-              <span className={scrolling ? "text-black md:font-bold text-3xl " : " text-white md:font-bold text-3xl"}>QuickDrop</span>
+              <span
+                className={
+                  scrolling
+                    ? "text-black md:font-bold text-3xl "
+                    : " text-white md:font-bold text-3xl"
+                }
+              >
+                QuickDrop
+              </span>
             </Link>
           </div>
           {/* for large devices */}
@@ -91,7 +98,11 @@ const Navbar = () => {
                 <div className="w-10 rounded-full">
                   <img
                     alt="Tailwind CSS Navbar component"
-                    src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                    src={
+                      user?.photoURL
+                        ? `${user?.photoURL}`
+                        : "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                    }
                   />
                 </div>
               </div>
@@ -109,7 +120,11 @@ const Navbar = () => {
                   <a>Deshboard</a>
                 </li>
                 <li>
-                  <a>Logout</a>
+                  {user ? (
+                    <Link onClick={logOut}>Logout</Link>
+                  ) : (
+                    <Link to={"/login"}>Login</Link>
+                  )}
                 </li>
               </ul>
             </div>

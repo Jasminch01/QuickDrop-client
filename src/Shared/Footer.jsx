@@ -10,7 +10,7 @@ const Footer = () => {
             <p>
               ACME Industries Ltd.
               <br />
-              Providing reliable tech since 1992
+              Providing reliable courier Services since 1992
             </p>
           </aside>
           <nav>

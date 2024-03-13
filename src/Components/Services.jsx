@@ -2,7 +2,7 @@ import Container from "./Container";
 
 const Services = () => {
   return (
-    <div className="bg-gray-800  p-5">
+    <div className="bg-gray-800 pt-5 pb-10">
       <p className="text-2xl md:text-3xl font-bold text-center my-5 text-white">
         Our Services
       </p>

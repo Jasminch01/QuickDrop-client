@@ -1,30 +1,54 @@
 import { Link } from "react-router-dom";
 import { HiMenu } from "react-icons/hi";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
+  const [scrolling, setScrolling] = useState(false);
+
+  const changeColor = () => {
+    if (window.scrollY >= 10) {
+      setScrolling(true);
+    } else {
+      setScrolling(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", changeColor);
+    return () => {
+      window.removeEventListener("scroll", changeColor);
+    };
+  }, []);
+
   const links = (
     <>
       <li>
         <Link>About</Link>
       </li>
       <li>
-        <Link>Services</Link>
+        <Link>Book a Parcel</Link>
       </li>
       <li>
-        <Link>Pricing</Link>
+        <Link>My Parcels</Link>
       </li>
       <li>
-        <Link>FAQ</Link>
+        <Link>All Parcels</Link>
       </li>
     </>
   );
 
   return (
-    <div>
+    <div
+      className={
+        scrolling
+          ? "flex items-center py-10 shadow-xl md:py-10 z-30 text-black bg-white fixed top-0  w-full mx-auto"
+          : `fixed top-0 w-full mx-auto flex items-center py-10 z-20 transition duration-300 ease-in-out `
+      }
+    >
       <div className="lg:mx-auto md:max-w-6xl w-full">
         <div
           className={
-            "flex items-center text-white fixed z-10 top-0 md:max-w-6xl mx-auto w-full"
+            "flex items-center fixed z-20 top-0 md:max-w-6xl mx-auto w-full mt-5 md:mt-0"
           }
         >
           <div className="md:navbar-start w-full lg:pt-5 lg:pb-5 lg:pe-5 md:p-5 flex items-center">
@@ -44,11 +68,15 @@ const Navbar = () => {
               </ul>
             </div>
             <Link>
-              <span className="md:font-bold text-3xl">QuickDrop</span>
+              <span className={scrolling ? "text-black md:font-bold text-3xl " : " text-white md:font-bold text-3xl"}>QuickDrop</span>
             </Link>
           </div>
           {/* for large devices */}
-          <div>
+          <div
+            className={`navbar-center flex${
+              scrolling ? `text-black` : ` text-white`
+            }`}
+          >
             <ul className="menu-horizontal hidden md:flex space-x-5 text-lg">
               {links}
             </ul>

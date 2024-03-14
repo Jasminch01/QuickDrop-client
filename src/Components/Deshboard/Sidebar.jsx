@@ -4,6 +4,7 @@ import { AiOutlineBars } from "react-icons/ai";
 import AdminMenu from "./AdminMenu";
 import DelivaryMansMenu from "./DelivaryMansMenu";
 import UsersMenu from "./UsersMenu";
+import { Link } from "react-router-dom";
 // import { BsGraphUp } from "react-icons/bs";
 // import ToggleBtn from "../../Button/ToggleButton";
 // import Hostmenu from "./Hostmenu";
@@ -37,7 +38,7 @@ const Sidebar = () => {
         <div>
           <div>
             <div className="w-full hidden md:flex px-4 py-2 shadow-lg justify-center items-center bg-blue-500 mx-auto">
-              <p className="font-bold text-3xl text-white">QuickDrop</p>
+              <Link to={'/'} className="font-bold text-3xl text-white">QuickDrop</Link>
             </div>
           </div>
 

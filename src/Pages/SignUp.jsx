@@ -3,18 +3,23 @@ import loginAnimate from "../../public/login.json";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../Hooks/UseAuth";
+import { saveUser } from "../api/auth";
 
 const SignUp = () => {
   const { handleSubmit, reset, register } = useForm();
   const { createUser, updateUserProfile } = useAuth();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const createUserSubmit = async ({ name, email, password }) => {
     try {
       const result = await createUser(email, password);
-      console.log(result);
+      console.log(result.email);
       await updateUserProfile(name);
-      navigate('/')
+      const res = await saveUser(result?.user);
+      console.log(res);
+      if (res.acknowledged && res.upsertedCount) {
+        navigate("/");
+      }
     } catch (error) {
       console.log(error);
     }

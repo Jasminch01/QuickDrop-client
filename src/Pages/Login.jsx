@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../Hooks/UseAuth";
 import { useForm } from "react-hook-form";
+import { saveUser } from "../api/auth";
 const Login = () => {
   const { handleSubmit, reset, register } = useForm();
   const { signIn, signInWithGoogle } = useAuth();
@@ -24,8 +25,10 @@ const Login = () => {
   const googleLogin = async () => {
     try {
       const result = await signInWithGoogle();
-      console.log(result);
-      navigate(from, { replace: true });
+      const res = await saveUser(result?.user);
+      if (res.acknowledged && res.upsertedCount) {
+        navigate(from, { replace: true });
+      }
     } catch (error) {
       console.log(error);
     }

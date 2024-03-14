@@ -112,12 +112,12 @@ const Navbar = () => {
               >
                 <li>
                   <a className="justify-between">
-                    User name
+                    {user ? user?.displayName : ` User`}
                     <span className="badge">New</span>
                   </a>
                 </li>
                 <li>
-                  <Link to={'/deshboard'}>Deshboard</Link>
+                  <Link to={"/deshboard"}>Deshboard</Link>
                 </li>
                 <li>
                   {user ? (

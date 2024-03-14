@@ -4,6 +4,8 @@ import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
 import DeshboardLayout from "../Layout/DeshboardLayout";
+import PrivateRoute from "./PrivetRoute";
+import Users from "../Components/Users";
 
 const Router = createBrowserRouter([
   {
@@ -30,12 +32,22 @@ const Router = createBrowserRouter([
   },
   {
     path: "/deshboard",
-    element: <DeshboardLayout></DeshboardLayout>,
+    element: (
+      <PrivateRoute>
+        {" "}
+        <DeshboardLayout />
+      </PrivateRoute>
+    ),
     errorElement: <div></div>,
     children: [
       {
-        path: "users",
-        element: <div></div>,
+        path: "all-users",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <Users />{" "}
+          </PrivateRoute>
+        ),
       },
     ],
   },

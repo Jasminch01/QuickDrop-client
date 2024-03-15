@@ -49,9 +49,12 @@ const AuthProvider = ({ children }) => {
   };
 
   const updateUserProfile = (name, photo) => {
+    console.log(photo)
     return updateProfile(auth.currentUser, {
       displayName: name,
-      photoURL: photo,
+      photoURL: photo
+        ? photo
+        : "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg",
     });
   };
 

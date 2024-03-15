@@ -13,6 +13,7 @@ import DeliveryMans from "../Components/Admin/DeliveryMans";
 import MyListings from "../Components/DeliveryMan/MyListings";
 import MyReviews from "../Components/DeliveryMan/MyReviews";
 import MyParcels from "../Components/Users/MyParcels";
+import Profile from "../Components/Profile";
 
 const Router = createBrowserRouter([
   {
@@ -41,7 +42,6 @@ const Router = createBrowserRouter([
     path: "/deshboard",
     element: (
       <PrivateRoute>
-        {" "}
         <DeshboardLayout />
       </PrivateRoute>
     ),
@@ -109,7 +109,7 @@ const Router = createBrowserRouter([
         path: "profile",
         element: (
           <PrivateRoute>
-            <Users />
+            <Profile/>
           </PrivateRoute>
         ),
       },

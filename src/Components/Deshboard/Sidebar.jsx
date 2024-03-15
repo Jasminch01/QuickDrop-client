@@ -25,7 +25,7 @@ const Sidebar = () => {
     setActive(!isActive);
   };
   return (
-    <div className="h-screen">
+    <div className="md:h-screen">
       {/* Small Screen Navbar */}
       <div className="bg-gray-100 text-gray-800 flex justify-between md:hidden">
         <div>
@@ -75,7 +75,7 @@ const Sidebar = () => {
           <MenuItem
             icon={FcSettings}
             label="Profile"
-            address="/dashboard/profile"
+            address="profile"
           />
           <button
             onClick={logOut}

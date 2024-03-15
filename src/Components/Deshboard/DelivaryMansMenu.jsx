@@ -13,7 +13,7 @@ const DelivaryMansMenu = () => {
       <MenuItem
         icon={MdHomeWork}
         label="My Delivary list"
-        address="delivary list"
+        address="delivary-list"
       />
     </>
   );

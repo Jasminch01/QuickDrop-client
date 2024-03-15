@@ -1,7 +1,6 @@
 import MenuItem from "./MenuItems";
 import { SiGoogledocs } from "react-icons/si";
 import { AiTwotoneFolderAdd } from "react-icons/ai";
-import { CgProfile } from "react-icons/cg";
 import { useState } from "react";
 import BookModal from "../BookModal";
 
@@ -12,7 +11,6 @@ const UsersMenu = () => {
   };
   return (
     <>
-      <MenuItem icon={CgProfile} label="My Profile" address="my-profile" />
       <MenuItem icon={SiGoogledocs} label="My Parcels" address="my-parcels" />
       <div
         onClick={modalHandler}

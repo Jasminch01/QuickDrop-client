@@ -71,7 +71,7 @@ const BookModal = ({ isOpen, setIsOpen }) => {
               Name
             </label>
             <input
-              className="w-full rounded-md border-2 py-2"
+              className="w-full rounded-md border-2 py-2 px-3"
               type="text"
               id="name"
               value={user?.displayName}
@@ -83,7 +83,7 @@ const BookModal = ({ isOpen, setIsOpen }) => {
               Email Adress
             </label>
             <input
-              className="w-full rounded-md border-2 py-2"
+              className="w-full rounded-md border-2 py-2 px-3"
               type="text"
               id="email"
               value={user?.email}
@@ -95,7 +95,7 @@ const BookModal = ({ isOpen, setIsOpen }) => {
               Phone Number
             </label>
             <input
-              className="w-full rounded-md border-2 py-2"
+              className="w-full rounded-md border-2 py-2 px-3"
               type="tel"
               id="phone"
               {...register("phone")}
@@ -107,7 +107,7 @@ const BookModal = ({ isOpen, setIsOpen }) => {
               Reciver Name
             </label>
             <input
-              className="w-full rounded-md border-2 py-2"
+              className="w-full rounded-md border-2 py-2 px-3"
               type="text"
               id="reciver_name"
               {...register("reciver_name")}
@@ -118,7 +118,7 @@ const BookModal = ({ isOpen, setIsOpen }) => {
               Reciver Email Address
             </label>
             <input
-              className="w-full rounded-md border-2 py-2"
+              className="w-full rounded-md border-2 py-2 px-3"
               type="text"
               id="reciver_email"
               {...register("reciver_email")}
@@ -129,7 +129,7 @@ const BookModal = ({ isOpen, setIsOpen }) => {
               Reciver Phone Number
             </label>
             <input
-              className="w-full rounded-md border-2 py-2"
+              className="w-full rounded-md border-2 py-2 px-3"
               type="tel"
               id="reciver_phone"
               {...register("reciver_phone")}
@@ -140,7 +140,7 @@ const BookModal = ({ isOpen, setIsOpen }) => {
               Parcel Weight
             </label>
             <input
-              className="w-full rounded-md border-2 py-2"
+              className="w-full rounded-md border-2 py-2 px-3"
               type="number"
               id="parcel-weight"
               {...register("parcel_weight")}
@@ -151,7 +151,7 @@ const BookModal = ({ isOpen, setIsOpen }) => {
               Parcel Delivery Address
             </label>
             <input
-              className="w-full rounded-md border-2 py-2"
+              className="w-full rounded-md border-2 py-2 px-3"
               type="text"
               id="parcel-address"
               {...register("parcel_address")}

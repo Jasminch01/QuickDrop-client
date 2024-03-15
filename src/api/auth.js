@@ -24,3 +24,7 @@ export const getUser = async (email) => {
   const { data } = await axiosSecure(`/user/${email}`);
   return data;
 };
+export const getParcels = async (email) => {
+  const { data } = await axiosSecure(`/parcels/${email}`);
+  return data;
+};

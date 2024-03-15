@@ -49,6 +49,15 @@ const Router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "book-parcel",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <Users />{" "}
+          </PrivateRoute>
+        ),
+      },
     ],
   },
   {

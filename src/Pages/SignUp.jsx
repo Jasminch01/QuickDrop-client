@@ -13,7 +13,6 @@ const SignUp = () => {
   const createUserSubmit = async ({ name, email, password }) => {
     try {
       const result = await createUser(email, password);
-      console.log(result.email);
       await updateUserProfile(name);
       const res = await saveUser(result?.user);
       console.log(res);

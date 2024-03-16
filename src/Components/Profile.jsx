@@ -13,7 +13,7 @@ const Profile = () => {
   const [userImage, setUserImage] = useState(photoURL);
   const [isOpen, setIsOpen] = useState(false);
 
-  const { data: currentUser } = useQuery({
+  const { data: currentUser, refetch} = useQuery({
     queryFn: async () => await getUser(userEmail),
     queryKey: ["user"],
   });
@@ -58,7 +58,7 @@ const Profile = () => {
           Update profile
         </button>
       </div>
-      <UpdateModal isOpen={isOpen} setIsOpen={setIsOpen} />
+      <UpdateModal refetch={refetch} isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>
   );
 };

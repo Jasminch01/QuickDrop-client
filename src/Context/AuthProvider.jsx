@@ -9,6 +9,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateEmail,
   updateProfile,
 } from "firebase/auth";
 // import { clearCookie } from "../api/auth";
@@ -49,13 +50,16 @@ const AuthProvider = ({ children }) => {
   };
 
   const updateUserProfile = (name, photo) => {
-    console.log(photo)
     return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: photo
         ? photo
         : "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg",
     });
+  };
+
+  const updateUserEmail = (email) => {
+    return updateEmail(auth.currentUser, email);
   };
 
   // onAuthStateChange
@@ -80,6 +84,7 @@ const AuthProvider = ({ children }) => {
     resetPassword,
     logOut,
     updateUserProfile,
+    updateEmail,
   };
 
   return (

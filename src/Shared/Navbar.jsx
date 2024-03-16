@@ -28,13 +28,13 @@ const Navbar = () => {
         <Link>About</Link>
       </li>
       <li>
-        <Link>Book a Parcel</Link>
+        <Link>Services</Link>
       </li>
       <li>
-        <Link>My Parcels</Link>
+        <Link>FAQ</Link>
       </li>
       <li>
-        <Link>All Parcels</Link>
+        <Link>Contact Us</Link>
       </li>
     </>
   );
@@ -113,7 +113,7 @@ const Navbar = () => {
                 <li>
                   <a className="justify-between">
                     {user ? user?.displayName : ` User`}
-                    <span className="badge">New</span>
+                    <span className="badge bg-blue-500 text-white">New</span>
                   </a>
                 </li>
                 <li>

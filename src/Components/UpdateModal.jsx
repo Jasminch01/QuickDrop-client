@@ -4,36 +4,37 @@ import PropTypes from "prop-types";
 import useAuth from "../Hooks/UseAuth";
 import { profileUpload, updateUser } from "../api/auth";
 
-const UpdateModal = ({ isOpen, setIsOpen }) => {
+const UpdateModal = ({ isOpen, setIsOpen, refetch }) => {
   const { user } = useAuth();
-  const { updateUserProfile, updateEmail } = useAuth();
+
+  const { updateUserProfile, updateUserEmail } = useAuth();
   const { register, handleSubmit, reset } = useForm();
   const onCancel = () => {
     reset();
     setIsOpen(false);
   };
 
-  const submit = async ({ name, email, photoURL }) => {
+  const submit = async ({ name, email, photo }) => {
     const data = new FormData();
-    data.append("image", photoURL[0]);
+    data.append("image", photo[0]);
 
     try {
       const res = await profileUpload(data);
       const photoURL = res.data.display_url;
-      const userId = user._id;
       const updateUserData = {
         name,
         email,
         photoURL,
       };
       const updateProfileRes = await updateUserProfile(name, photoURL);
-      const updateEmailResponse = await updateEmail(email);
-      const dbResponse = await updateUser(updateUserData, userId);
-      console.log(dbResponse);
+      const updateEmailResponse = await updateUserEmail(email);
+      const dbResponse = updateUser(updateUserData, user.email)
+      console.log(dbResponse)
     } catch (error) {
       console.log(error);
     }
     reset();
+    refetch()
   };
   return (
     <div>
@@ -73,7 +74,7 @@ const UpdateModal = ({ isOpen, setIsOpen }) => {
             </label>
             <input
               type="file"
-              {...register("photoURL")}
+              {...register("photo")}
               className="file-input file-input-bordered w-full"
             />
           </div>

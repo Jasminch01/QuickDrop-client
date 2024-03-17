@@ -14,10 +14,10 @@ export const saveUser = async (user) => {
 };
 
 //update users
-export const updateUser = async (user, id) => {
-  const { data } = await axiosSecure.put(`/users/${id}`, user);
-
-  return data;
+export const updateUser = async (user, email) => {
+  console.log(email)
+  // const { data } = await axiosSecure.put(`/users-update/${email}`, user);
+  // return data;
 };
 
 export const getRole = async (email) => {

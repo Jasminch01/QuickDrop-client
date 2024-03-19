@@ -12,12 +12,13 @@ const Profile = () => {
   const { email: userEmail, photoURL, displayName } = user;
   const [userImage, setUserImage] = useState(photoURL);
   const [isOpen, setIsOpen] = useState(false);
+  console.log(userImage);
 
-  const { data: currentUser, refetch} = useQuery({
+  const { data: currentUser, refetch } = useQuery({
     queryFn: async () => await getUser(userEmail),
     queryKey: ["user"],
   });
-  refetch()
+  refetch();
 
   return (
     <div>
@@ -32,9 +33,9 @@ const Profile = () => {
         <form className="relative">
           <img
             src={
-              currentUser?.photoURL
-                ? currentUser?.photoURL
-                : "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+              currentUser?.photoURL ||
+              userImage ||
+              "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
             }
             alt=""
             className="w-60 rounded"

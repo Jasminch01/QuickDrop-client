@@ -9,7 +9,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-  updateEmail,
+  // updateEmail,
   updateProfile,
 } from "firebase/auth";
 // import { clearCookie } from "../api/auth";
@@ -57,10 +57,10 @@ const AuthProvider = ({ children }) => {
         : "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg",
     });
   };
-
-  const updateUserEmail = (email) => {
-    return updateEmail(auth.currentUser, email);
-  };
+//task :1 for changing email before verify the user email
+  // const updateUserEmail = (email) => {
+  //   return updateEmail(auth.currentUser, email);
+  // };
 
   // onAuthStateChange
   useEffect(() => {
@@ -84,7 +84,7 @@ const AuthProvider = ({ children }) => {
     resetPassword,
     logOut,
     updateUserProfile,
-    updateUserEmail
+    // updateUserEmail
   };
 
   return (

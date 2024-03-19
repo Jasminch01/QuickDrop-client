@@ -17,6 +17,7 @@ const Profile = () => {
     queryFn: async () => await getUser(userEmail),
     queryKey: ["user"],
   });
+  refetch()
 
   return (
     <div>
@@ -31,8 +32,8 @@ const Profile = () => {
         <form className="relative">
           <img
             src={
-              userImage
-                ? userImage
+              currentUser?.photoURL
+                ? currentUser?.photoURL
                 : "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
             }
             alt=""

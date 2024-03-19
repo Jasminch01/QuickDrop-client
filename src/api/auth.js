@@ -15,20 +15,20 @@ export const saveUser = async (user) => {
 
 //update users
 export const updateUser = async (user, email) => {
-  console.log(email)
-  // const { data } = await axiosSecure.put(`/users-update/${email}`, user);
-  // return data;
+  const { data } = await axiosSecure.patch(`/users-update/${email}`, user);
+  return data;
 };
 
 export const getRole = async (email) => {
   const { data } = await axiosSecure(`/user/${email}`);
   return data.role;
 };
-
+//get all user data by admin
 export const getUsers = async () => {
   const { data } = await axiosSecure(`/users`);
   return data;
 };
+//get current user's data
 export const getUser = async (email) => {
   const { data } = await axiosSecure(`/user/${email}`);
   return data;

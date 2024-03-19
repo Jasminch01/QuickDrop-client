@@ -3,6 +3,7 @@ import Modal from "./Modal";
 import PropTypes from "prop-types";
 import useAuth from "../Hooks/UseAuth";
 import { profileUpload, updateUser } from "../api/auth";
+import toast from "react-hot-toast";
 
 const UpdateModal = ({ isOpen, setIsOpen, refetch }) => {
   const { user } = useAuth();
@@ -27,14 +28,21 @@ const UpdateModal = ({ isOpen, setIsOpen, refetch }) => {
         photoURL,
       };
       const updateProfileRes = await updateUserProfile(name, photoURL);
-      const updateEmailResponse = await updateUserEmail(email);
-      const dbResponse = updateUser(updateUserData, user.email)
-      console.log(dbResponse)
+
+      //Task1 : verify email
+      // const updateEmailResponse = await updateUserEmail(email);
+      // console.log(updateEmailResponse)
+
+      const dbResponse = await updateUser(updateUserData, user.email);
+      if (dbResponse.acknowledged && dbResponse.modifiedCount) {
+        toast.success("User Update successfully");
+        refetch()
+      }
     } catch (error) {
       console.log(error);
     }
     reset();
-    refetch()
+    onCancel()
   };
   return (
     <div>
@@ -57,7 +65,9 @@ const UpdateModal = ({ isOpen, setIsOpen, refetch }) => {
               required
             />
           </div>
-          <div className="flex flex-col mb-5">
+
+          {/* Task 1 : Email updadte veryfication needed */}
+          {/* <div className="flex flex-col mb-5">
             <label htmlFor="email" className="mb-2">
               Email Address
             </label>
@@ -67,7 +77,7 @@ const UpdateModal = ({ isOpen, setIsOpen, refetch }) => {
               id="email"
               {...register("email")}
             />
-          </div>
+          </div> */}
           <div className="form-control w-full py-2">
             <label htmlFor="email" className="mb-2">
               Profile Photo

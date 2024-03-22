@@ -10,7 +10,7 @@ const AdminMenu = () => {
       <MenuItem
         icon={FaUsers}
         label="Delivery mans"
-        address="all-delivery-man"
+        address="all-delivery-mans"
       />
     </div>
   );

@@ -31,11 +31,7 @@ const Router = createBrowserRouter([
       {
         path: "about",
         element: <div></div>,
-      },
-      {
-        path: "all-parcels",
-        element: <div></div>,
-      },
+      }
     ],
   },
   {
@@ -58,7 +54,7 @@ const Router = createBrowserRouter([
         ),
       },
       {
-        path: "all-parcel",
+        path: "all-parcels",
         element: (
           <PrivateRoute>
             <AdminRoute>
@@ -68,7 +64,7 @@ const Router = createBrowserRouter([
         ),
       },
       {
-        path: "all-deliveryman",
+        path: "all-delivery-mans",
         element: (
           <PrivateRoute>
             <AdminRoute>

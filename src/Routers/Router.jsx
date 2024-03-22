@@ -14,6 +14,7 @@ import MyListings from "../Components/DeliveryMan/MyListings";
 import MyReviews from "../Components/DeliveryMan/MyReviews";
 import MyParcels from "../Components/Users/MyParcels";
 import Profile from "../Components/Profile";
+import Stastastick from "../Components/Admin/Stastastick";
 
 const Router = createBrowserRouter([
   {
@@ -31,18 +32,26 @@ const Router = createBrowserRouter([
       {
         path: "about",
         element: <div></div>,
-      }
+      },
     ],
   },
   {
     path: "/deshboard",
     element: (
       <PrivateRoute>
-        <DeshboardLayout />
+        <DeshboardLayout/>
       </PrivateRoute>
     ),
     errorElement: <div></div>,
     children: [
+      {
+        index : true,
+        element: (
+          <PrivateRoute>
+              <Stastastick/>
+          </PrivateRoute>
+        ),
+      },
       {
         path: "all-users",
         element: (
@@ -58,7 +67,7 @@ const Router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AdminRoute>
-              <AllParcels/>
+              <AllParcels />
             </AdminRoute>
           </PrivateRoute>
         ),
@@ -68,7 +77,7 @@ const Router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AdminRoute>
-              <DeliveryMans/>
+              <DeliveryMans />
             </AdminRoute>
           </PrivateRoute>
         ),
@@ -78,7 +87,7 @@ const Router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <DeliveryManRoute>
-              <MyListings/>
+              <MyListings />
             </DeliveryManRoute>
           </PrivateRoute>
         ),
@@ -88,7 +97,7 @@ const Router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <DeliveryManRoute>
-              <MyReviews/>
+              <MyReviews />
             </DeliveryManRoute>
           </PrivateRoute>
         ),
@@ -97,7 +106,7 @@ const Router = createBrowserRouter([
         path: "my-parcels",
         element: (
           <PrivateRoute>
-            <MyParcels/>
+            <MyParcels />
           </PrivateRoute>
         ),
       },
@@ -105,7 +114,7 @@ const Router = createBrowserRouter([
         path: "profile",
         element: (
           <PrivateRoute>
-            <Profile/>
+            <Profile />
           </PrivateRoute>
         ),
       },

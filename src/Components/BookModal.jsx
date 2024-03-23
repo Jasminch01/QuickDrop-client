@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Modal from "./Modal";
 import useAuth from "../Hooks/UseAuth";
 import axiosSecure from "../api";
+import moment from "moment";
 
 const BookModal = ({ isOpen, setIsOpen }) => {
   const { handleSubmit, register, reset } = useForm();
@@ -15,7 +16,6 @@ const BookModal = ({ isOpen, setIsOpen }) => {
     reset();
     setIsOpen(false);
   };
-
   const submit = async ({
     name,
     email,
@@ -34,7 +34,7 @@ const BookModal = ({ isOpen, setIsOpen }) => {
     } else {
       price = perKg * parcel_weight;
     }
-    const bookingDate = new Date()
+    const bookingDate = moment().format('ll');
 
     const data = {
       name,

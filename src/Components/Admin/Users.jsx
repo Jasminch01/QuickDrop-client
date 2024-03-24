@@ -2,12 +2,16 @@ import { useQuery } from "@tanstack/react-query";
 import { getUsers } from "../../api/auth";
 import DataTable from "react-data-table-component";
 import { MdArrowRightAlt } from "react-icons/md";
+import ManageModal from "./ManageModal";
+import { useState } from "react";
 
 const Users = () => {
+  const [isOpen, setIsOpen] = useState(false)
   const { data: users = [], isLoading } = useQuery({
     queryFn: async () => await getUsers(),
     queryKey: ["users"],
   });
+
 
   const columns = [
     {
@@ -52,7 +56,7 @@ const Users = () => {
       center: true,
       responsive: true,
       cell: () => (
-        <button className="py-2 bg-blue-400 text-white px-3">
+        <button onClick={() => setIsOpen(true)} className="py-2 bg-blue-400 text-white px-3">
           Update Role
         </button>
       ),
@@ -85,6 +89,7 @@ const Users = () => {
       <div className="mt-10">
         <DataTable columns={columns} data={users} customStyles={customStyles} />
       </div>
+      <ManageModal isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>
   );
 };

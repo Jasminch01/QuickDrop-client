@@ -3,7 +3,7 @@ import axiosSecure from ".";
 
 export const saveUser = async (user) => {
   const currentUser = {
-    name : user.displayName,
+    name: user.displayName,
     email: user.email,
     role: "user",
     status: "Verified",
@@ -42,10 +42,15 @@ export const getParcels = async (email) => {
 
 //get all parcels by admin
 export const getAllParcels = async () => {
-  const {data} = await axiosSecure(`/parcels`);
-  console.log(data)
+  const { data } = await axiosSecure(`/parcels`);
+  console.log(data);
   return data;
-}
+};
+//update users role
+export const updateUserRole = async (userId, updateRole) => {
+  const { data } = await axiosSecure.patch(`/update-role/${userId}`, updateRole);
+  return data;
+};
 export const profileUpload = async (image) => {
   const { data } = await axios.post(
     `https://api.imgbb.com/1/upload?key=f11b624aeee9668471c2c0181e019790`,

@@ -1,16 +1,19 @@
 import { useForm } from "react-hook-form";
 import PropTypes from "prop-types";
 import Modal from "../Modal";
+import { updateUserRole } from "../../api/auth";
 // import toast from "react-hot-toast";
 
-const ManageModal = ({ isOpen, setIsOpen }) => {
+const ManageModal = ({ isOpen, setIsOpen, userId }) => {
   const { register, handleSubmit, reset } = useForm();
   const onCancel = () => {
     reset();
     setIsOpen(false);
   };
 
-  const submit = async () => {
+  const submit = async ({ role }) => {
+   const res =  await updateUserRole(userId, {role : role});
+   console.log(res)
     reset();
     onCancel();
   };
@@ -25,12 +28,15 @@ const ManageModal = ({ isOpen, setIsOpen }) => {
         <form onSubmit={handleSubmit(submit)} className="mt-5">
           <div className="flex flex-col mb-5">
             <label htmlFor="name" className="mb-2 font-medium">
-             Avilable Role
+              Avilable Role
             </label>
-            <select className="select select-bordered w-full">
-              <option>Admin</option>
-              <option>Delivery Man</option>
-              <option>User</option>
+            <select
+              className="select select-bordered w-full"
+              {...register("role")}
+            >
+              <option value={"admin"}>Admin</option>
+              <option value={"delivery_Man"}>Delivery Man</option>
+              <option value={"user"}>User</option>
             </select>
           </div>
           <div className="flex gap-3 justify-end">

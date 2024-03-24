@@ -7,11 +7,16 @@ import { useState } from "react";
 
 const Users = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [userId, setUserId] = useState(null)
   const { data: users = [], isLoading } = useQuery({
     queryFn: async () => await getUsers(),
     queryKey: ["users"],
   });
-
+   
+  const handleOpen = (id) => {
+    setIsOpen(true)
+    setUserId(id)
+  }
 
   const columns = [
     {
@@ -55,8 +60,8 @@ const Users = () => {
       sortable: true,
       center: true,
       responsive: true,
-      cell: () => (
-        <button onClick={() => setIsOpen(true)} className="py-2 bg-blue-400 text-white px-3">
+      cell: (row) => (
+        <button onClick={() => handleOpen(row._id)} className="py-2 bg-blue-400 text-white px-3">
           Update Role
         </button>
       ),
@@ -89,7 +94,7 @@ const Users = () => {
       <div className="mt-10">
         <DataTable columns={columns} data={users} customStyles={customStyles} />
       </div>
-      <ManageModal isOpen={isOpen} setIsOpen={setIsOpen} />
+      <ManageModal isOpen={isOpen} setIsOpen={setIsOpen} userId={userId} />
     </div>
   );
 };

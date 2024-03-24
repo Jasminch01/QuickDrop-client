@@ -33,10 +33,19 @@ export const getUser = async (email) => {
   const { data } = await axiosSecure(`/user/${email}`);
   return data;
 };
+
+//get parcels by users
 export const getParcels = async (email) => {
   const { data } = await axiosSecure(`/parcels/${email}`);
   return data;
 };
+
+//get all parcels by admin
+export const getAllParcels = async () => {
+  const {data} = await axiosSecure(`/parcels`);
+  console.log(data)
+  return data;
+}
 export const profileUpload = async (image) => {
   const { data } = await axios.post(
     `https://api.imgbb.com/1/upload?key=f11b624aeee9668471c2c0181e019790`,

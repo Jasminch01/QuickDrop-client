@@ -46,8 +46,12 @@ export const getAllParcels = async () => {
   return data;
 };
 
+//post assigned parcel for delivery mans by admin\
+export const postAssignedParcel = async (parcel) => {
+  const {data} = await axiosSecure.post(`/parcel-assigned`, parcel);
+  return data;
+}
 //get all delivery mans by admin 
-
 export const getAllDeliveryMan = async() => {
   const {data} = await axiosSecure(`/users/deliverymans`);
   return data;

@@ -7,10 +7,16 @@ import AssignModal from "./AssignModal";
 
 const AllParcels = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [assignParcel, setAssignParcel] = useState({})
   const { data: parcels = [], isLoading, refetch } = useQuery({
     queryFn: async () => await getAllParcels(),
     queryKey: ["parcels"],
   });
+
+  const handleManage = (parcel) => {
+    setIsOpen(true);
+    setAssignParcel(parcel)
+  }
 
   const columns = [
     {
@@ -54,8 +60,8 @@ const AllParcels = () => {
       sortable: true,
       center: true,
       responsive: true,
-      cell: () => (
-        <button onClick={() => setIsOpen(true)} className="py-2 bg-blue-400 text-white px-3">
+      cell: (row) => (
+        <button onClick={() => handleManage(row)} className="py-2 bg-blue-400 text-white px-3">
           Manage
         </button>
       ),
@@ -86,7 +92,7 @@ const AllParcels = () => {
       <div className="mt-10">
         <DataTable columns={columns} data={parcels} customStyles={customStyles} />
       </div>
-      <AssignModal isOpen={isOpen} setIsOpen={setIsOpen}/>
+      <AssignModal isOpen={isOpen} setIsOpen={setIsOpen} parcel={assignParcel}/>
     </div>
   );
 };

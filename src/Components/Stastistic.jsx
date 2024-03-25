@@ -1,3 +1,4 @@
+import AnimatedNumber from "react-animated-numbers";
 import Container from "./Container";
 
 const Stastistic = () => {
@@ -18,7 +19,7 @@ const Stastistic = () => {
             <p className="">Brances</p>
           </div>
           <div className=" rounded bg-slate-50/5 text-white p-5 shadow-lg space-y-2 text-center">
-            <p className="font-bold text-3xl">500</p>
+            <p className="font-bold text-3xl"><AnimatedNumber animateToNumber={500}/></p>
             <p className="">Users</p>
           </div>
         </div>

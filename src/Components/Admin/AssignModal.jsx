@@ -2,8 +2,9 @@ import PropTypes from "prop-types";
 import Modal from "../Modal";
 import { useForm } from "react-hook-form";
 import { useQuery } from "@tanstack/react-query";
-import { getAllDeliveryMan } from "../../api/auth";
-const AssignModal = ({ isOpen, setIsOpen }) => {
+import { getAllDeliveryMan, postAssignedParcel } from "../../api/auth";
+import toast from "react-hot-toast";
+const AssignModal = ({ isOpen, setIsOpen, parcel }) => {
   const {
     data: deliverymans = [],
     isLoading,
@@ -17,10 +18,18 @@ const AssignModal = ({ isOpen, setIsOpen }) => {
     reset();
     setIsOpen(false);
   };
-  const submit = () => {
-    console.log(submit);
+  const submit = async ({ assignTo }) => {
+    const assignedParcel = {
+      ...parcel,
+      assignTo,
+    };
+
+    const res = await postAssignedParcel(assignedParcel);
+    if (res.acknoledge && res.insertedId) {
+      toast.success(`Successfully Assigned for delivery ${assignTo}`)
+    }
   };
-  refetch()
+  refetch();
   return (
     <div>
       <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
@@ -32,13 +41,17 @@ const AssignModal = ({ isOpen, setIsOpen }) => {
         <form onSubmit={handleSubmit(submit)} className="mt-5">
           <div className="flex flex-col mb-5">
             <label htmlFor="name" className="mb-2 font-medium">
-              Assign To 
+              Assign To
             </label>
             <select
               className="select select-bordered w-full"
               {...register("assignTo")}
             >
-             { deliverymans.map(man => <option key={man._id} value={man.name}>{man.name}</option>)}
+              {deliverymans.map((man) => (
+                <option key={man._id} value={man.name}>
+                  {man.name}
+                </option>
+              ))}
             </select>
           </div>
           <div className="flex gap-3 justify-end">
@@ -65,6 +78,7 @@ const AssignModal = ({ isOpen, setIsOpen }) => {
 AssignModal.propTypes = {
   isOpen: PropTypes.bool,
   setIsOpen: PropTypes.func,
+  parcel: PropTypes.object,
 };
 
 export default AssignModal;

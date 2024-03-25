@@ -43,9 +43,15 @@ export const getParcels = async (email) => {
 //get all parcels by admin
 export const getAllParcels = async () => {
   const { data } = await axiosSecure(`/parcels`);
-  console.log(data);
   return data;
 };
+
+//get all delivery mans by admin 
+
+export const getAllDeliveryMan = async() => {
+  const {data} = await axiosSecure(`/user/deliverymans`);
+  return data;
+}
 //update users role
 export const updateUserRole = async (userId, updateRole) => {
   const { data } = await axiosSecure.patch(`/update-role/${userId}`, updateRole);

@@ -49,7 +49,7 @@ export const getAllParcels = async () => {
 //get all delivery mans by admin 
 
 export const getAllDeliveryMan = async() => {
-  const {data} = await axiosSecure(`/user/deliverymans`);
+  const {data} = await axiosSecure(`/users/deliverymans`);
   return data;
 }
 //update users role

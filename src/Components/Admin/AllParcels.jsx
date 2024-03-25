@@ -73,7 +73,6 @@ const AllParcels = () => {
       },
     },
   };
-  console.log(parcels)
   return (
     <div>
       <p className="font-medium text-lg flex items-center gap-5">

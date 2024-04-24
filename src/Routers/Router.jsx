@@ -15,18 +15,20 @@ import MyReviews from "../Components/DeliveryMan/MyReviews";
 import MyParcels from "../Components/Users/MyParcels";
 import Profile from "../Components/Profile";
 import Stastastick from "../Components/Admin/Stastastick";
+import Error from "../Pages/Error";
 
 const Router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
-    errorElement: <div></div>,
+    errorElement: <Error/>,
     children: [
       {
         index: true,
         element: <Home />,
       },
       {
+        path: "contact",
         element: <div></div>,
       },
       {

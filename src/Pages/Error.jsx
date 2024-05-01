@@ -1,7 +1,7 @@
 
 const Error = () => {
     return (
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center h-screen">
             <div>
                 <p className="text-center text-red-500 font-bold text-lg">404 not found</p>
             </div>
